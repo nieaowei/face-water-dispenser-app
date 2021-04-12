@@ -1,3 +1,4 @@
+import 'package:face_water_dispenser/component/login.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -23,8 +24,14 @@ class _ProfilePageState extends State<ProfilePage>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('个人信息'),
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
+        slivers: <Widget>[
+          CupertinoSliverNavigationBar(
+            largeTitle: Text('我的'),
+          ),
+        ],
+      )
     );
   }
 }

@@ -15,9 +15,13 @@ class _MonitorPageState extends State<MonitorPage> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      child: Container(
-        child: Text('dasd'),
+      child: CustomScrollView(
+        slivers: <Widget>[
+          CupertinoSliverNavigationBar(
+            largeTitle: Text('监控'),
+          ),
+        ],
       )
-      );
+    );
   }
 }

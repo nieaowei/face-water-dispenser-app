@@ -24,7 +24,14 @@ class _NotifyPageState extends State<NotifyPage>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
+        slivers: <Widget>[
+          CupertinoSliverNavigationBar(
+            largeTitle: Text('通知'),
+          ),
+        ],
+      )
     );
   }
 }

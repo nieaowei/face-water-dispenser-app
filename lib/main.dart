@@ -29,35 +29,23 @@ class MyApp extends StatelessWidget {
           ],
         ),
         tabBuilder: (context, index) {
-          switch (index) {
-            case 0:
-              return CupertinoTabView(
-                builder: (context) {
-                  return MonitorPage('监控');
-                },
+          return CupertinoTabView(
+            builder:(context){
+              switch (index) {
+                case 0:
+                      return MonitorPage('监控');
+                  break;
+                case 1:
+                      return Control();
+                case 2:
+                      return NotifyPage();
+                case 3:
+                      return ProfilePage();
+              }
+              return Container(
+                child:Text('404')
               );
-              break;
-            case 1:
-              return CupertinoTabView(
-                builder: (context) {
-                  return Control();
-                },
-              );
-            case 2:
-              return CupertinoTabView(
-                builder: (context) {
-                  return NotifyPage();
-                },
-              );
-            case 3:
-              return CupertinoTabView(
-                  builder: (context) {
-                    return ProfilePage();
-                  },
-                );
-          }
-          return Container(
-            child:Text('404')
+            }
           );
         },
       ),

@@ -8,8 +8,14 @@ class Control extends StatefulWidget {
 class _ControlState extends State<Control> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('控制'),
+    return CupertinoPageScaffold(
+      child: CustomScrollView(
+        slivers: <Widget>[
+          CupertinoSliverNavigationBar(
+            largeTitle: Text('控制'),
+          ),
+        ],
+      )
     );
   }
 }
