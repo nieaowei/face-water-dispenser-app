@@ -1,9 +1,15 @@
-import 'package:face_water_dispenser/page/Control.dart';
-import 'package:face_water_dispenser/page/monitor.dart';
-import 'package:face_water_dispenser/page/notify.dart';
-import 'package:face_water_dispenser/page/profile.dart';
+import 'package:dio/dio.dart';
+import 'package:face_water_dispenser/page/control/view.dart';
+import 'package:face_water_dispenser/page/monitor/view.dart';
+import 'package:face_water_dispenser/page/noLogin.dart';
+import 'package:face_water_dispenser/page/notify/view.dart';
+import 'package:face_water_dispenser/page/profile/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+
+import 'main_logic.dart';
+import 'main_state.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +19,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
+    final MainLogic logic = Get.put(MainLogic());
+    final MainState state = Get.find<MainLogic>().state;
+    return GetCupertinoApp(
       title: '人脸识别饮水机',
       home: CupertinoTabScaffold(
         tabBar: CupertinoTabBar(
@@ -33,12 +41,12 @@ class MyApp extends StatelessWidget {
             builder:(context){
               switch (index) {
                 case 0:
-                      return MonitorPage('监控');
+                      return state.logined.value ? MonitorPage():NoLoginPage();
                   break;
                 case 1:
-                      return Control();
+                      return state.logined.value ? ControlPage():NoLoginPage();
                 case 2:
-                      return NotifyPage();
+                      return state.logined.value ? NotifyPage():NoLoginPage();
                 case 3:
                       return ProfilePage();
               }
