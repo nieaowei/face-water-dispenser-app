@@ -32,6 +32,8 @@ dependencies:
   shared_preferences: ^2.0.5
   get: ^4.1.2
   qrscan: ^0.2.22
+  fl_chart: ^0.35.0
+  mqtt_client: ^7.2.1
   
 dev_dependencies:
   flutter_test:

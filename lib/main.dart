@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:face_water_dispenser/page/control/view.dart';
+import 'package:face_water_dispenser/page/error.dart';
 import 'package:face_water_dispenser/page/monitor/view.dart';
 import 'package:face_water_dispenser/page/noLogin.dart';
 import 'package:face_water_dispenser/page/notify/view.dart';
@@ -20,11 +21,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MainLogic logic = Get.put(MainLogic());
-    final MainState state = Get.find<MainLogic>().state;
+    final MainState state = Get
+        .find<MainLogic>()
+        .state;
     return GetCupertinoApp(
       title: '人脸识别饮水机',
+      // initialRoute: "/",
+      getPages: [GetPage(name: "/login", page: () => ProfilePage())],
       home: CupertinoTabScaffold(
         tabBar: CupertinoTabBar(
+          backgroundColor: Color(2),
           items: [
             BottomNavigationBarItem(
                 label: '监控', icon: Icon(CupertinoIcons.device_laptop)),
@@ -37,24 +43,21 @@ class MyApp extends StatelessWidget {
           ],
         ),
         tabBuilder: (context, index) {
-          return CupertinoTabView(
-            builder:(context){
-              switch (index) {
-                case 0:
-                      return state.logined.value ? MonitorPage():NoLoginPage();
-                  break;
-                case 1:
-                      return state.logined.value ? ControlPage():NoLoginPage();
-                case 2:
-                      return state.logined.value ? NotifyPage():NoLoginPage();
-                case 3:
-                      return ProfilePage();
-              }
-              return Container(
-                child:Text('404')
-              );
-            }
-          );
+          return SafeArea(
+              top: false,
+              child: CupertinoTabView(builder: (context) {
+                switch (index) {
+                  case 0:
+                    return MonitorPage();
+                  case 1:
+                    return ControlPage();
+                  case 2:
+                    return NotifyPage();
+                  case 3:
+                    return ProfilePage();
+                }
+                return Container(child: Text('404'));
+              }));
         },
       ),
     );

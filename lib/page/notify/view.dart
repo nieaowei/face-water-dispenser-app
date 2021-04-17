@@ -2,6 +2,9 @@ import 'package:face_water_dispenser/page/layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../main_logic.dart';
+import '../../main_state.dart';
+import '../noLogin.dart';
 import 'logic.dart';
 import 'state.dart';
 
@@ -10,6 +13,8 @@ class NotifyPage extends StatelessWidget {
   final NotifyState state = Get.find<NotifyLogic>().state;
   final GlobalKey<SliverAnimatedListState> _listKey =
       GlobalKey<SliverAnimatedListState>();
+  final MainState _mainState = Get.find<MainLogic>().state;
+
   var theme;
 
   Widget _msgItem(BuildContext context, String date, String content) {
@@ -37,10 +42,11 @@ class NotifyPage extends StatelessWidget {
 
   Widget _itemBuilder(
       BuildContext context, int index, Animation<double> animation) {
+    // state.list.addAll(_mainState.notifyMsgList.value);
     return SizeTransition(
         sizeFactor: animation,
-        child: _msgItem(context, state.list[state.list.length - index - 1].date,
-            state.list[state.list.length - index - 1].content));
+        child: Obx(()=>_msgItem(context, _mainState.notifyMsgList.value[_mainState.notifyMsgList.value.length - index - 1].date,
+            _mainState.notifyMsgList.value[_mainState.notifyMsgList.value.length - index - 1].content)));
   }
 
   @override
@@ -48,19 +54,36 @@ class NotifyPage extends StatelessWidget {
     theme = CupertinoTheme.of(context);
     return LayoutPage(
       title: "通知",
-      slivers: [
-        SliverAnimatedList(
-            key: _listKey,
-            itemBuilder: _itemBuilder,
-            initialItemCount: state.list.value.length),
-        SliverToBoxAdapter(
-            child: CupertinoButton.filled(
-                child: Text("刷新"),
-                onPressed: () {
-                  logic.fetchLatest();
-                  _listKey.currentState.insertItem(0);
-                }))
+      onRefresh: () async =>
+          {logic.fetchLatest(), _listKey.currentState.insertItem(0)},
+      trailings: [
+        Container(
+            child: Obx(
+          () => Icon(CupertinoIcons.circle_fill,
+              size: theme.textTheme.textStyle.fontSize,
+              color: _mainState.onlined.value
+                  ? CupertinoColors.systemGreen
+                  : CupertinoColors.systemRed),
+        )),
+        CupertinoButton(
+          padding: EdgeInsets.zero,
+          onPressed: () {
+            print(_mainState.onlined.value);
+            print(_mainState.logined.value);
+          },
+          child: Icon(CupertinoIcons.qrcode_viewfinder),
+        ),
       ],
+      slivers: _mainState.logined.value
+          ? [
+              SliverAnimatedList(
+                  key: _listKey,
+                  itemBuilder: _itemBuilder,
+                  initialItemCount: _mainState.notifyMsgList.value.length),
+            ]
+          : [
+              SliverToBoxAdapter(child: NoLoginPage()),
+            ],
     );
   }
 }

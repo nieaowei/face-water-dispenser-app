@@ -45,14 +45,35 @@ class ProfilePage extends StatelessWidget {
   final ProfileLogic logic = Get.put(ProfileLogic());
   final ProfileState state = Get.find<ProfileLogic>().state;
   final MainState _mainState = Get.find<MainLogic>().state;
+  CupertinoThemeData theme;
 
   @override
   Widget build(BuildContext context) {
+    theme = CupertinoTheme.of(context);
     return LayoutPage(
+      trailings: [
+        Container(
+            child: Obx(
+          () => Icon(CupertinoIcons.circle_fill,
+              size: theme.textTheme.textStyle.fontSize,
+              color: _mainState.onlined.value
+                  ? CupertinoColors.systemGreen
+                  : CupertinoColors.systemRed),
+        )),
+        CupertinoButton(
+          padding: EdgeInsets.zero,
+          onPressed: () {
+            print( _mainState.onlined.value);
+            print( _mainState.logined.value);
+          },
+          child: Icon(CupertinoIcons.qrcode_viewfinder),
+        ),
+      ],
       title: "我的",
       slivers: [
         SliverToBoxAdapter(
-            child: Obx(() => _mainState.logined.value ? ProfileMenu() : LoginCom()))
+            child: Obx(
+                () => _mainState.logined.value ? ProfileMenu() : LoginCom()))
       ],
     );
   }
