@@ -48,6 +48,14 @@ class MainLogic extends GetxController {
     state.onlined.value = true;
   }
 
+  void getLock() {
+    state.locked.value = true;
+  }
+
+  void setLock(bool ok){
+    state.locked.value = ok;
+  }
+
   void mqtt() {
     Timer tim;
     Timer tim2;
@@ -58,12 +66,12 @@ class MainLogic extends GetxController {
         onConnected: () {},
       ).then((value) {
         value.pongCallback = () {
-          log(DateTime.now().toString() + "ping");
-          tim?.cancel();
-          state.onlined.value = true;
-          tim = Timer(Duration(seconds: 60), () {
-            state.onlined.value = false;
-          });
+          // log(DateTime.now().toString() + "ping");
+          // tim?.cancel();
+          // state.onlined.value = true;
+          // tim = Timer(Duration(seconds: 60), () {
+          //   state.onlined.value = false;
+          // });
         };
         value.subscribe("/nekilc/device/ping", MqttQos.atLeastOnce);
         value.subscribe("/nekilc/device/monitor", MqttQos.atLeastOnce);

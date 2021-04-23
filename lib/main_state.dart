@@ -7,6 +7,7 @@ class MainState {
     ///Initialize variables
     logined = false.obs;
     onlined = false.obs;
+    locked = false.obs;
     monitorMsg = MonitorMsgEntity().obs;
     notifyMsgList = <NotifyMsgEntity>[].obs;
   }
@@ -15,5 +16,6 @@ class MainState {
   RxBool logined;
   RxBool onlined;
 
+  RxBool locked;
   RxObjectMixin<MonitorMsgEntity> monitorMsg;
 }

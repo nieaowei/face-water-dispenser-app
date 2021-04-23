@@ -45,8 +45,14 @@ class NotifyPage extends StatelessWidget {
     // state.list.addAll(_mainState.notifyMsgList.value);
     return SizeTransition(
         sizeFactor: animation,
-        child: Obx(()=>_msgItem(context, _mainState.notifyMsgList.value[_mainState.notifyMsgList.value.length - index - 1].date,
-            _mainState.notifyMsgList.value[_mainState.notifyMsgList.value.length - index - 1].content)));
+        child: Obx(() => _msgItem(
+            context,
+            _mainState.notifyMsgList
+                .value[_mainState.notifyMsgList.value.length - index - 1].date,
+            _mainState
+                .notifyMsgList
+                .value[_mainState.notifyMsgList.value.length - index - 1]
+                .content)));
   }
 
   @override
