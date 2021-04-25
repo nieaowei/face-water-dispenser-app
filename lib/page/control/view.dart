@@ -144,37 +144,42 @@ class ControlPage extends StatelessWidget {
                   }, childCount: 2),
                 ),
               ),
-              // SliverPadding(
-              //     padding: EdgeInsets.only(bottom: 20, left: 20, right: 20),
-              //     sliver: SliverToBoxAdapter(
-              //       child: CupertinoPopupSurface(
-              //           child: Container(
-              //         color: CupertinoColors.white,
-              //         padding: EdgeInsets.only(left: 10),
-              //         child: Row(
-              //           children: [
-              //             Expanded(
-              //               child: Padding(
-              //                   padding: EdgeInsets.only(right: 10),
-              //                   child: CupertinoTextField(
-              //                     decoration: BoxDecoration(
-              //                       border: Border(bottom: BorderSide()),
-              //                     ),
-              //                     textAlign: TextAlign.end,
-              //                     suffix: Padding(
-              //                         padding: EdgeInsets.only(right: 5),
-              //                         child: Text("ml")),
-              //                   )),
-              //             ),
-              //             CupertinoButton.filled(
-              //                 padding: EdgeInsets.only(
-              //                     top: 10, bottom: 10, left: 20, right: 20),
-              //                 child: Text("设置流量"),
-              //                 onPressed: () {})
-              //           ],
-              //         ),
-              //       )),
-              //     ))
+              SliverPadding(
+                  padding: EdgeInsets.only(bottom: 20, left: 20, right: 20),
+                  sliver: SliverToBoxAdapter(
+                    child: CupertinoPopupSurface(
+                        child: Container(
+                      color: CupertinoColors.white,
+                      padding: EdgeInsets.only(left: 10),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Padding(
+                                padding: EdgeInsets.only(right: 10),
+                                child:StatefulBuilder(
+                                  builder:(BuildContext ctx, StateSetter set){
+                                    return CupertinoTextField(
+                                      decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide()),
+                                      ),
+                                      textAlign: TextAlign.end,
+                                      suffix: Padding(
+                                          padding: EdgeInsets.only(right: 5),
+                                          child: Text("ml")),
+                                    );
+                                  }
+                                )
+                            ),
+                          ),
+                          CupertinoButton.filled(
+                              padding: EdgeInsets.only(
+                                  top: 10, bottom: 10, left: 20, right: 20),
+                              child: Text("设置流量"),
+                              onPressed: () {})
+                        ],
+                      ),
+                    )),
+                  ))
             ]
           : [
               // SliverFillRemaining(child: SafeArea(child:Center(child:Text("dsa"))),),

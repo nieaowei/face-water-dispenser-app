@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -123,7 +123,6 @@
 				70E03D3546459B4BC7544B32 /* Pods-Runner.release.xcconfig */,
 				42B3219FF591C5F64E3C2C2F /* Pods-Runner.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -361,13 +360,14 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2Q8B34FN8L;
 				ENABLE_BITCODE = NO;
+				FLUTTER_ROOT = /Users/nieaowei/flutter;
 				INFOPLIST_FILE = "Runner/Info-$(CONFIGURATION).plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.faceWaterDispenser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nekilc.faceWaterDispenser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -493,13 +493,14 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2Q8B34FN8L;
 				ENABLE_BITCODE = NO;
+				FLUTTER_ROOT = /Users/nieaowei/flutter;
 				INFOPLIST_FILE = "Runner/Info-$(CONFIGURATION).plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.faceWaterDispenser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nekilc.faceWaterDispenser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -517,13 +518,14 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2Q8B34FN8L;
 				ENABLE_BITCODE = NO;
+				FLUTTER_ROOT = /Users/nieaowei/flutter;
 				INFOPLIST_FILE = "Runner/Info-$(CONFIGURATION).plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.faceWaterDispenser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nekilc.faceWaterDispenser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

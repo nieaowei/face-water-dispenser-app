@@ -1,3 +1,4 @@
+import 'package:face_water_dispenser/component/login/view.dart';
 import 'package:face_water_dispenser/page/layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -88,7 +89,7 @@ class NotifyPage extends StatelessWidget {
                   initialItemCount: _mainState.notifyMsgList.value.length),
             ]
           : [
-              SliverToBoxAdapter(child: NoLoginPage()),
+              SliverToBoxAdapter(child: LoginCom1()),
             ],
     );
   }
